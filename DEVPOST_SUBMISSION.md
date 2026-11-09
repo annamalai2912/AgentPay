@@ -122,6 +122,6 @@ Timestamps:
 1:26 - PayPal Orders v2 REST Integration & Fast-Pass Capture
 1:40 - Confetti Celebration & Digital Settlement Receipt
 
-GitHub Repository: https://github.com/Uzuus/agentpay-commerce
+GitHub Repository: https://github.com/annamalai2912/AgentPay
 Built with: PayPal Developer Platform, Next.js 14, React, TypeScript, Tailwind CSS, Google Gemini API.
 ```
