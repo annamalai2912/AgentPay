@@ -6,7 +6,7 @@
 [![AI Engine](https://img.shields.io/badge/AI-Agentic%20Tool%20Calling-10b981?logo=google&logoColor=white)](https://aistudio.google.com/)
 [![Render](https://img.shields.io/badge/Deploy-Render%20Ready-black?logo=render&logoColor=white)](render.yaml)
 
-> **AgentPay** is an autonomous AI buyer and negotiator that takes high-level user shopping goals, autonomously scans marketplace catalog nodes, negotiates secret promotional discounts, verifies merchant trust and return policies, and executes secure, guardrail-compliant checkouts using the **PayPal Developer Platform (Orders v2 API)**.
+> **AgentPay** is an autonomous AI buyer and negotiator that takes high-level user shopping goals, searches merchant catalogs, negotiates secret promotional discounts, verifies merchant trust and return policies, and executes secure, guardrail-compliant checkouts using the **PayPal Developer Platform (Orders v2 API)**.
 
 ---
 
@@ -22,7 +22,7 @@
 
 * **🧠 Multi-Step Autonomous Reasoning Loop**:
   * `decompose_intent`: Extracts specifications, constraints, and budget limit.
-  * `tool_scan_marketplace`: Queries distributed inventory nodes for optimal hardware matches.
+  * `tool_scan_marketplace`: Searches verified merchant catalogs for optimal product matches.
   * `tool_negotiate_coupons`: Automatically retrieves and applies merchant promotional codes.
   * `tool_verify_seller_reputation`: Audits seller trust score (≥90%), 30-day return window, and PayPal Buyer Protection eligibility.
   * `tool_build_paypal_payload`: Constructs itemized v2 PayPal REST Orders payloads with automated tax and shipping calculations.

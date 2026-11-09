@@ -52,7 +52,7 @@ export async function runAgentCommerceLoop(
   addStep(
     "scan_marketplace",
     "tool_call",
-    "Invoking tool: `tool_scan_marketplace` across registered merchant nodes...",
+    "Invoking tool: `tool_scan_marketplace` to search verified merchant stores...",
     "tool_scan_marketplace",
     { query: userQuery, budgetLimit: userBudget, categoryFilter: isMonitor ? "monitors" : isKeyboard ? "keyboards" : isAudio ? "audio" : isDock ? "accessories" : "all" }
   );

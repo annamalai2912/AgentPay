@@ -34,7 +34,7 @@ AgentPay is an autonomous agentic commerce copilot:
 1. **Natural Language Procurement:** Users state their goal (e.g., *"Find me a portable monitor under $150 with 4K resolution, check reviews, negotiate the best deal, and checkout"*).
 2. **Autonomous Tool-Calling Loop:**
    - Decomposes specifications and extracts strict spending constraints.
-   - Invokes `tool_scan_marketplace` to rank products across distributed catalog nodes.
+   - Invokes `tool_scan_marketplace` to search verified merchant catalogs for matching products.
    - Invokes `tool_negotiate_coupons` to retrieve and apply merchant discount codes (saving up to 30%).
    - Invokes `tool_verify_seller_reputation` to inspect seller trust ratings (≥90%), check for 30-day return guarantees, and verify PayPal Buyer Protection.
    - Invokes `tool_build_paypal_payload` to construct an itemized PayPal v2 REST Order.

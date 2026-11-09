@@ -23,7 +23,7 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
         <Activity className="w-8 h-8 mx-auto mb-2 text-paypal-blue animate-pulse" />
         <h3 className="text-sm font-semibold text-slate-800">Agent Reasoning Engine Ready</h3>
         <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-          Submit your shopping query above to watch the agent scan inventory nodes, negotiate coupon codes, and build a PayPal sandbox order.
+          Submit your shopping query above to watch the agent search verified merchants, negotiate coupon codes, and build a PayPal sandbox order.
         </p>
       </div>
     );
