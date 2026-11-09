@@ -1,57 +1,69 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, ShieldCheck, Key, Zap } from "lucide-react";
 
 export function SandboxCredentialsBanner() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="w-full bg-charcoal border-b border-hairline text-xs text-stone-light">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+    <div className="w-full bg-slate-50 border-b border-paypal-border text-xs text-slate-700">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2 font-mono text-[11px]">
-            <span className="w-1.5 h-1.5 bg-bronze rounded-xs" />
-            <span className="text-bone font-medium">EVALUATION PROTOCOL:</span>
-            <span className="hidden sm:inline text-stone">
-              Zero-configuration sandbox mode active. Optional client ID &amp; secret override available.
+          <div className="flex items-center gap-2">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-paypal-blue opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-paypal-blue"></span>
+            </span>
+            <span className="font-bold text-paypal-darkblue">PayPal Sandbox Environment:</span>
+            <span className="hidden sm:inline text-slate-600">
+              Evaluator zero-setup active &bull; Orders v2 REST API ready for instant testing.
             </span>
           </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center gap-1 font-mono text-[11px] text-stone hover:text-bone transition-colors cursor-pointer"
+            className="flex items-center gap-1 font-semibold text-paypal-blue hover:text-paypal-darkblue transition-colors cursor-pointer text-xs"
           >
-            <span>{isOpen ? "[HIDE CREDENTIALS]" : "[INSPECT PARAMETERS]"}</span>
-            {isOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+            <span>{isOpen ? "Hide Judge Credentials" : "View Judge Credentials & Sandbox Info"}</span>
+            {isOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           </button>
         </div>
 
         {isOpen && (
-          <div className="mt-2.5 pt-2.5 border-t border-hairline grid grid-cols-1 md:grid-cols-3 gap-3 text-[11px] font-mono text-stone-light animate-fadeIn">
-            <div className="p-3 bg-obsidian border border-hairline rounded-sm space-y-1">
-              <span className="text-bone font-medium block">01 / FAST-PASS EVALUATION</span>
-              <p className="text-stone leading-relaxed">
-                Evaluators can test instantly. Click any preset, inspect the autonomous agent ledger, and authorize checkout via simulated or live sandbox capture.
+          <div className="mt-3 pt-3 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-600 animate-fadeIn">
+            <div className="p-3 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-xs">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <Zap className="w-3.5 h-3.5 text-paypal-blue" />
+                <span>1. Instant 1-Click Evaluation</span>
+              </div>
+              <p className="text-slate-500 leading-relaxed text-[11px]">
+                No credentials required to test! The built-in PayPal fast-pass simulator allows you to experience the complete autonomous loop, price negotiation, and capture.
               </p>
             </div>
 
-            <div className="p-3 bg-obsidian border border-hairline rounded-sm space-y-1">
-              <span className="text-bone font-medium block">02 / LIVE SANDBOX OVERRIDE</span>
-              <p className="text-stone">
-                Configure in <code className="text-bone bg-charcoal px-1 py-0.5 rounded-xs">.env.local</code>:
+            <div className="p-3 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-xs">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <Key className="w-3.5 h-3.5 text-paypal-darkblue" />
+                <span>2. Using Your PayPal Sandbox App</span>
+              </div>
+              <p className="text-slate-500 text-[11px]">
+                Provide your sandbox credentials in <code className="text-paypal-darkblue bg-slate-100 px-1 py-0.5 rounded font-mono">.env.local</code>:
               </p>
-              <pre className="p-1.5 bg-charcoal text-[10px] text-stone-light border border-hairline overflow-x-auto rounded-xs">
-                NEXT_PUBLIC_PAYPAL_CLIENT_ID=sb{'\n'}
-                PAYPAL_CLIENT_SECRET=sandbox_secret{'\n'}
+              <pre className="p-1.5 bg-slate-50 text-[10px] text-slate-800 border border-slate-200 rounded font-mono overflow-x-auto">
+                NEXT_PUBLIC_PAYPAL_CLIENT_ID=your_id{'\n'}
+                PAYPAL_CLIENT_SECRET=your_secret{'\n'}
                 GEMINI_API_KEY=optional_key
               </pre>
             </div>
 
-            <div className="p-3 bg-obsidian border border-hairline rounded-sm space-y-1">
-              <span className="text-bone font-medium block">03 / SPENDING CIRCUIT-BREAKER</span>
-              <p className="text-stone leading-relaxed">
-                Deterministic budget cap. If final order exceeds the authorized ceiling, execution is halted until explicit operator override is granted.
+            <div className="p-3 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-xs">
+              <div className="flex items-center gap-1.5 font-bold text-slate-900">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                <span>3. PayPal Buyer Protection</span>
+              </div>
+              <p className="text-slate-500 leading-relaxed text-[11px]">
+                AgentPay validates seller ratings (&ge;90%) and 30-day return windows before constructing the PayPal Orders payload, ensuring buyer safety.
               </p>
             </div>
           </div>

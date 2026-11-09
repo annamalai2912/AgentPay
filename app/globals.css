@@ -3,17 +3,17 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 245, 245, 247;
-  --background-rgb: 12, 12, 14;
+  --foreground-rgb: 12, 22, 59;
+  --background-rgb: 255, 255, 255;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background-color: rgb(var(--background-rgb));
+  color: #0C163B;
+  background-color: #FFFFFF;
   min-height: 100vh;
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
   letter-spacing: -0.01em;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Mechanical tabular figures for financial numbers */
@@ -21,28 +21,30 @@ body {
   font-feature-settings: "tnum" 1, "cv05" 1;
 }
 
-/* Minimalist scrollbars without colored glow */
+/* Clean minimal scrollbars */
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #0C0C0E;
+  background: #F8FAFC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #27272A;
-  border-radius: 2px;
+  background: #CBD5E1;
+  border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3F3F46;
+  background: #94A3B8;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
+    transform: scale(0.99);
   }
   to {
     opacity: 1;
+    transform: scale(1);
   }
 }
 

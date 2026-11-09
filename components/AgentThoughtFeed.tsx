@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { AgentThoughtStep, AgentDecision } from "@/lib/types";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { CheckCircle2, ChevronDown, ChevronUp, Wrench, ShieldCheck, Activity } from "lucide-react";
 
 interface AgentThoughtFeedProps {
   steps: AgentThoughtStep[];
@@ -19,44 +19,49 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
 
   if (steps.length === 0 && !isLoading) {
     return (
-      <div className="bg-charcoal border border-hairline rounded-sm p-6 text-center text-stone">
-        <div className="w-2 h-2 bg-stone-dark mx-auto mb-2 rounded-xs" />
-        <h3 className="text-xs font-mono font-medium text-stone-light uppercase tracking-wider">
-          ORCHESTRATION_ENGINE_IDLE
-        </h3>
-        <p className="text-[11px] text-stone mt-1 max-w-sm mx-auto font-mono">
-          Awaiting natural language procurement parameters.
+      <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center text-slate-500 shadow-xs">
+        <Activity className="w-8 h-8 mx-auto mb-2 text-paypal-blue animate-pulse" />
+        <h3 className="text-sm font-semibold text-slate-800">Agent Reasoning Engine Ready</h3>
+        <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
+          Submit your shopping query above to watch the agent scan inventory nodes, negotiate coupon codes, and build a PayPal sandbox order.
         </p>
       </div>
     );
   }
 
   return (
-    <div className="bg-charcoal border border-hairline rounded-sm p-4 space-y-3 font-mono">
-      {/* Ledger Header */}
-      <div className="flex items-center justify-between pb-2.5 border-b border-hairline text-xs">
-        <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 bg-bronze rounded-xs" />
-          <span className="font-semibold text-bone uppercase tracking-wider">
-            AGENT DECISION LEDGER
-          </span>
-          <span className="text-[10px] text-stone">0x89F4...B912</span>
+    <div className="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+      {/* Header with status and confidence */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+        <div>
+          <h3 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            Autonomous Procurement Ledger
+            {isLoading && (
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-paypal-blue opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-paypal-blue"></span>
+              </span>
+            )}
+          </h3>
+          <p className="text-xs text-slate-500">
+            Real-time tool invocations, discount negotiation, and PayPal validation
+          </p>
         </div>
 
         {decision && (
-          <div className="flex items-center gap-2 text-[10px]">
-            <span className="px-1.5 py-0.5 rounded-xs bg-obsidian border border-hairline text-stone-light">
-              CONFIDENCE: {decision.confidenceScore}%
+          <div className="flex items-center gap-2">
+            <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+              Match Confidence: {decision.confidenceScore}%
             </span>
-            <span className="px-1.5 py-0.5 rounded-xs bg-obsidian border border-hairline text-stone-light">
-              {steps.length} STAGES_EXECUTED
+            <span className="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-medium">
+              {steps.length} Steps
             </span>
           </div>
         )}
       </div>
 
-      {/* Audit Step List */}
-      <div className="space-y-2">
+      {/* Step by Step Timeline */}
+      <div className="space-y-2.5">
         {steps.map((step, idx) => {
           const isExpanded = !!expandedSteps[step.id];
           const hasDetails = step.toolArgs || step.toolResult;
@@ -64,51 +69,66 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
           return (
             <div
               key={step.id}
-              className="p-3 bg-obsidian border border-hairline rounded-xs transition-colors"
+              className="p-3.5 rounded-xl border border-slate-100 bg-slate-50/70 hover:bg-slate-50 transition-colors"
             >
               <div className="flex items-start justify-between gap-3">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2 text-[10px]">
-                    <span className="text-stone">[{String(idx + 1).padStart(2, "0")}]</span>
-                    <span className="text-bone font-semibold uppercase">{step.stepName}</span>
-                    {step.toolName && (
-                      <span className="px-1.5 py-0.2 rounded-xs bg-charcoal text-bronze border border-hairline">
-                        {step.toolName}
-                      </span>
+                <div className="flex items-start gap-2.5">
+                  <div className="mt-0.5">
+                    {step.status === "complete" ? (
+                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    ) : step.status === "tool_call" ? (
+                      <Wrench className="w-4 h-4 text-paypal-blue" />
+                    ) : (
+                      <Activity className="w-4 h-4 text-slate-500" />
                     )}
-                    <span className="text-stone-dark">{step.timestamp}</span>
                   </div>
-                  <p className="text-[12px] font-sans text-stone-light leading-relaxed">
-                    {step.message}
-                  </p>
+
+                  <div className="space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-xs font-bold text-slate-800">
+                        Step {idx + 1}: {step.stepName}
+                      </span>
+                      {step.toolName && (
+                        <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-white text-paypal-darkblue border border-slate-200 font-medium">
+                          {step.toolName}
+                        </span>
+                      )}
+                      <span className="text-[10px] text-slate-400">{step.timestamp}</span>
+                    </div>
+                    <p className="text-xs text-slate-600 leading-relaxed">{step.message}</p>
+                  </div>
                 </div>
 
                 {hasDetails && (
                   <button
                     onClick={() => toggleStep(step.id)}
-                    className="p-1 text-stone hover:text-bone transition-colors cursor-pointer"
+                    className="p-1 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
                     title={isExpanded ? "Collapse arguments" : "Expand arguments"}
                   >
-                    {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                   </button>
                 )}
               </div>
 
-              {/* Tool Parameters & Result */}
+              {/* Tool Parameters & Results */}
               {isExpanded && hasDetails && (
-                <div className="mt-2.5 pt-2 border-t border-hairline text-[10px] space-y-2 text-stone-light">
+                <div className="mt-3 pt-2.5 border-t border-slate-200 text-xs font-mono space-y-2">
                   {step.toolArgs && (
                     <div>
-                      <span className="text-stone uppercase block mb-1">TOOL_PARAMETERS:</span>
-                      <pre className="p-2 bg-charcoal border border-hairline text-stone-light overflow-x-auto rounded-xs">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase block mb-1">
+                        Tool Inputs:
+                      </span>
+                      <pre className="p-2.5 rounded-lg bg-white border border-slate-200 text-slate-800 text-[11px] overflow-x-auto">
                         {JSON.stringify(step.toolArgs, null, 2)}
                       </pre>
                     </div>
                   )}
                   {step.toolResult && (
                     <div>
-                      <span className="text-stone uppercase block mb-1">EXECUTION_OUTPUT:</span>
-                      <pre className="p-2 bg-charcoal border border-hairline text-stone-light overflow-x-auto rounded-xs">
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase block mb-1">
+                        Execution Output:
+                      </span>
+                      <pre className="p-2.5 rounded-lg bg-white border border-slate-200 text-emerald-800 text-[11px] overflow-x-auto">
                         {JSON.stringify(step.toolResult, null, 2)}
                       </pre>
                     </div>
@@ -120,26 +140,24 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
         })}
       </div>
 
-      {/* Security & Policy Ledger */}
+      {/* Safety & Trust Badges */}
       {decision && (
-        <div className="pt-2 border-t border-hairline grid grid-cols-2 sm:grid-cols-4 gap-1.5 text-[10px]">
-          <div className="p-2 bg-obsidian border border-hairline rounded-xs text-stone-light">
-            <span className="text-stone block">SELLER_SCORE:</span>
-            <span className="text-bone font-medium font-tabular">&ge; 90% PASS</span>
+        <div className="pt-3 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+          <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span className="font-medium">Seller Trust &ge; 90%</span>
           </div>
-          <div className="p-2 bg-obsidian border border-hairline rounded-xs text-stone-light">
-            <span className="text-stone block">RETURN_WINDOW:</span>
-            <span className="text-bone font-medium">30-DAY ASSURED</span>
+          <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span className="font-medium">30-Day Guarantee</span>
           </div>
-          <div className="p-2 bg-obsidian border border-hairline rounded-xs text-stone-light">
-            <span className="text-stone block">BUYER_ESCROW:</span>
-            <span className="text-bone font-medium">PAYPAL COVERED</span>
+          <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
+            <ShieldCheck className="w-4 h-4 text-paypal-blue" />
+            <span className="font-medium">PayPal Protection</span>
           </div>
-          <div className="p-2 bg-obsidian border border-hairline rounded-xs text-stone-light">
-            <span className="text-stone block">BUDGET_GUARD:</span>
-            <span className={`font-medium ${decision.withinBudget ? "text-emerald-500" : "text-bronze"}`}>
-              {decision.withinBudget ? "COMPLIANT" : "OVERRIDE_REQ"}
-            </span>
+          <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
+            <span className={`w-2 h-2 rounded-full ${decision.withinBudget ? "bg-emerald-500" : "bg-amber-500"}`} />
+            <span className="font-medium">{decision.withinBudget ? "Budget Compliant" : "Override Required"}</span>
           </div>
         </div>
       )}

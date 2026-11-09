@@ -9,39 +9,26 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        obsidian: "#0C0C0E",
-        charcoal: "#16161A",
-        raised: "#1F1F24",
-        hairline: "#27272A",
-        "hairline-strong": "#3F3F46",
-        bone: "#F5F5F7",
-        stone: {
-          light: "#A1A1AA",
-          DEFAULT: "#71717A",
-          dark: "#52525B",
-        },
-        bronze: {
-          light: "#F59E0B",
-          DEFAULT: "#D97706",
-          dark: "#B45309",
-        },
-        brass: {
-          light: "#FDE047",
-          DEFAULT: "#EAB308",
-          dark: "#CA8A04",
+        paypal: {
+          blue: "#0070BA",
+          darkblue: "#003087",
+          navy: "#001C48",
+          darknavy: "#001435",
+          gold: "#FFC439",
+          goldHover: "#F2BA36",
+          gray: "#F5F7FA",
+          lightgray: "#F8FAFC",
+          border: "#E1E7EB",
+          text: "#0C163B",
+          subtext: "#687173",
         },
       },
       fontFamily: {
-        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "Segoe UI", "Roboto", "sans-serif"],
         mono: ["JetBrains Mono", "SF Mono", "Menlo", "Courier New", "monospace"],
       },
       borderRadius: {
-        xs: "2px",
-        sm: "4px",
-        DEFAULT: "4px",
-        md: "6px",
-        lg: "8px",
-        xl: "12px",
+        pill: "9999px",
       },
     },
   },
