@@ -1,64 +1,68 @@
 1
-00:00:01,000 --> 00:00:07,500
-Welcome to AgentPay: Autonomous Agentic Commerce Assistant.
+00:00:01,100 --> 00:00:07,402
+Welcome to AgentPay, the autonomous commerce assistant for the PayPal AI Hackathon 2026.
 
 2
-00:00:07,500 --> 00:00:14,000
-Built for the PayPal AI Hackathon 2026 to eliminate e-commerce friction.
+00:00:07,352 --> 00:00:14,443
+Online shopping forces buyers to compare specs, search for expired coupons, and worry about seller legitimacy.
 
 3
-00:00:14,000 --> 00:00:21,000
-Transforms shopping into an autonomous goal-oriented workflow with PayPal.
+00:00:14,443 --> 00:00:18,989
+AgentPay turns commerce into an autonomous workflow powered by PayPal.
 
 4
-00:00:22,000 --> 00:00:27,500
-Initiating real-world scenario: 'Find 4K portable monitor under $150...'
+00:00:21,110 --> 00:00:32,344
+On the AgentPay workspace, we initiate our procurement goal: 'Find a portable monitor under $150 with 4K resolution, check reviews, negotiate deals, and checkout.
 
 5
-00:00:27,500 --> 00:00:34,000
-Setting spending limit: Strict Budget Ceiling locked at $150.00.
+00:00:32,294 --> 00:00:36,817
+We lock our budget cap at $150 and launch the reasoning loop.
 
 6
-00:00:34,000 --> 00:00:42,500
-Launching autonomous agent: Multi-step reasoning loop executes in real time.
+00:00:38,936 --> 00:00:41,818
+Watch the live Decision Ledger on the left.
 
 7
-00:00:44,000 --> 00:00:49,500
-Live Decision Ledger: Decomposing specifications & constraints.
+00:00:41,768 --> 00:00:49,064
+The agent scans verified merchant inventory, securing an exclusive $50 rebate with code AGENTDEAL25.
 
 8
-00:00:49,500 --> 00:00:55,500
-Executing tool_scan_marketplace & tool_negotiate_coupons (-$50 rebate).
+00:00:49,064 --> 00:00:54,916
+Next, it verifies a 98% trust rating and a guaranteed 30-day return policy.
 
 9
-00:00:55,500 --> 00:01:02,500
-Executing tool_verify_seller_reputation: 98% trust score & 30-day returns.
+00:00:57,027 --> 00:01:01,931
+On the right, AgentPay presents the matched KYY 4K OLED Monitor.
 
 10
-00:01:03,500 --> 00:01:10,000
-Recommended Product: KYY 15.6-inch 4K OLED Portable Monitor.
+00:01:01,881 --> 00:01:13,131
+The ledger proves complete pricing transparency: list price is reduced by our $50 rebate to $148.39, strictly respecting our $150 budget limit.
 
 11
-00:01:10,000 --> 00:01:17,000
-Transparent Pricing Ledger: $189.99 - $50.00 rebate = $148.39 settlement.
+00:01:15,261 --> 00:01:17,018
+Now we checkout.
 
 12
-00:01:17,000 --> 00:01:24,000
-Guaranteed Budget Check: $148.39 <= $150.00 ceiling strictly respected.
+00:01:16,968 --> 00:01:21,081
+AgentPay connects to PayPal's Orders v2 REST API.
 
 13
-00:01:25,000 --> 00:01:30,500
-Proceeding to checkout via PayPal Orders v2 REST API.
+00:01:21,081 --> 00:01:27,775
+We open the checkout modal, verify our spending limit guardrail, and authorize the order via PayPal Sandbox.
 
 14
-00:01:30,500 --> 00:01:37,000
-Opening PayPal Checkout modal & authorizing payment in sandbox.
+00:01:29,895 --> 00:01:31,607
+Payment captured!
 
 15
-00:01:38,000 --> 00:01:44,000
-Payment Captured! Digital Receipt issued with PayPal Order & Capture IDs.
+00:01:31,557 --> 00:01:39,147
+AgentPay issues an authenticated digital receipt with PayPal Order ID, Capture ID, and an AI savings report.
 
 16
-00:01:44,000 --> 00:01:50,500
-Open Source under MIT • Deployed on Render • Ready for Judging. Thank you!
+00:01:39,147 --> 00:01:43,034
+AgentPay is open source under MIT and ready for judging.
+
+17
+00:01:43,034 --> 00:01:44,397
+Thank you!
 
