@@ -54,7 +54,7 @@ AgentPay is an autonomous agentic commerce copilot:
 
 ### **Accomplishments that we're proud of**
 - Zero-friction evaluation for hackathon judges: Evaluators can test the entire autonomous loop in 1-click even without configuring `.env` keys, while also supporting live PayPal Sandbox credentials.
-- A beautiful, futuristic cyber-fintech UI that displays the agent's real-time thought stream and function calls with expandable parameters and latency metrics.
+- An ultra-refined Swiss-inspired architectural commerce interface that displays the agent's real-time decision ledger, tool parameters, and execution telemetry.
 - Seamless end-to-end integration from natural language goal to PayPal captured payment and celebratory digital receipt.
 
 ### **What we learned**
@@ -74,7 +74,7 @@ AgentPay is an autonomous agentic commerce copilot:
 
 | Time | Visual on Screen | Spoken Narration |
 | :--- | :--- | :--- |
-| **0:00 - 0:25** | Show AgentPay landing page with cyber-fintech UI and glowing PayPal badge. | *"Hi everyone, this is AgentPay—an autonomous agentic commerce assistant built for the PayPal AI Hackathon. In traditional e-commerce, buyers waste hours comparing specs, hunting for expired coupons, and worrying about merchant trustworthiness. AgentPay changes that by turning shopping into an autonomous goal-oriented workflow powered by AI and PayPal."* |
+| **0:00 - 0:25** | Show AgentPay landing page with Swiss minimalist architectural layout and tactile obsidian/bronze styling. | *"Hi everyone, this is AgentPay—an autonomous agentic commerce assistant built for the PayPal AI Hackathon. In traditional e-commerce, buyers waste hours comparing specs, hunting for expired coupons, and worrying about merchant trustworthiness. AgentPay changes that by turning shopping into an autonomous goal-oriented workflow powered by AI and PayPal."* |
 | **0:25 - 0:50** | Click on the preset: *"Find me a portable monitor under $150 with 4K resolution..."* and hit **Launch Autonomous Agent**. | *"Let's test it with a real scenario: 'Find me a portable monitor under $150 with 4K resolution, check reviews, negotiate the best deal, and checkout.' When we launch the agent, watch the live decision stream on the left."* |
 | **0:50 - 1:25** | Expand the tool call steps in the Agent Decision Stream (`tool_scan_marketplace`, `tool_negotiate_coupons`, `tool_verify_seller_reputation`). | *"The agent decomposes our query and calls `tool_scan_marketplace` to rank products. It discovers the KYY 15.6\" 4K UHD monitor. It then invokes `tool_negotiate_coupons` to retrieve a partner promotion code, saving $50! Next, it runs a trust audit verifying a 98% seller rating and 30-day returns. Finally, it constructs the itemized PayPal Orders payload."* |
 | **1:25 - 1:55** | Show the **Spending Limit Guardrail**: adjust the budget slider to $100 and show the warning banner requiring explicit user override. | *"Safety is paramount in Agentic Commerce. Notice our Budget Cap slider. If our budget is set lower than the negotiated total, AgentPay's spending guardrail activates, preventing unauthorized transactions until the user explicitly signs off."* |
