@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { Product, DealBreakdown, CapturedOrderReceipt } from "@/lib/types";
-import { X, Lock, AlertTriangle, Loader2, ShieldCheck } from "lucide-react";
+import { X, LockSimple, Warning, CircleNotch, CheckCircle } from "@phosphor-icons/react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 
 interface PayPalCheckoutModalProps {
@@ -113,7 +113,7 @@ export function PayPalCheckoutModal({
             onClick={onClose}
             className="p-1 text-slate-400 hover:text-slate-800 transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X size={20} />
           </button>
         </div>
 
@@ -145,7 +145,7 @@ export function PayPalCheckoutModal({
         {isOverBudget && (
           <div className="p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs space-y-1.5 text-amber-900">
             <div className="flex items-center gap-1.5 font-bold text-amber-800">
-              <AlertTriangle className="w-4 h-4 text-amber-600" />
+              <Warning size={20} className="text-amber-600" />
               <span>Autonomous Spending Limit Notice</span>
             </div>
             <p className="text-[11px] text-amber-800 leading-relaxed">
@@ -211,12 +211,12 @@ export function PayPalCheckoutModal({
           >
             {isProcessing ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-slate-900" />
+                <CircleNotch size={20} className="animate-spin text-slate-900" />
                 <span>Capturing PayPal Sandbox Payment...</span>
               </>
             ) : (
               <>
-                <ShieldCheck className="w-4 h-4 text-paypal-darkblue" />
+                <CheckCircle size={20} className="text-paypal-darkblue" />
                 <span>Capture Order (Fast-Pass Sandbox)</span>
               </>
             )}
@@ -270,7 +270,7 @@ export function PayPalCheckoutModal({
 
         {/* Footer */}
         <div className="pt-2 text-center text-xs text-slate-400 flex items-center justify-center gap-1.5">
-          <Lock className="w-3.5 h-3.5 text-paypal-blue" />
+          <LockSimple size={16} className="text-paypal-blue" />
           <span>Secured by PayPal Developer Sandbox &bull; Buyer Protection Active</span>
         </div>
       </div>

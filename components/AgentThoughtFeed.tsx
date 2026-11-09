@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { AgentThoughtStep, AgentDecision } from "@/lib/types";
-import { CheckCircle2, ChevronDown, ChevronUp, Wrench, ShieldCheck, Activity } from "lucide-react";
+import { CheckCircle, CaretDown, CaretUp, Wrench, Pulse } from "@phosphor-icons/react";
 
 interface AgentThoughtFeedProps {
   steps: AgentThoughtStep[];
@@ -20,7 +20,7 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
   if (steps.length === 0 && !isLoading) {
     return (
       <div className="bg-white border border-slate-200 rounded-2xl p-8 text-center text-slate-500 shadow-xs">
-        <Activity className="w-8 h-8 mx-auto mb-2 text-paypal-blue animate-pulse" />
+        <Pulse size={24} className="mx-auto mb-2 text-paypal-blue" />
         <h3 className="text-sm font-semibold text-slate-800">Agent Reasoning Engine Ready</h3>
         <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
           Submit your shopping query above to watch the agent search verified merchants, negotiate coupon codes, and build a PayPal sandbox order.
@@ -75,11 +75,11 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
                 <div className="flex items-start gap-2.5">
                   <div className="mt-0.5">
                     {step.status === "complete" ? (
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                      <CheckCircle size={20} className="text-emerald-600" />
                     ) : step.status === "tool_call" ? (
-                      <Wrench className="w-4 h-4 text-paypal-blue" />
+                      <Wrench size={20} className="text-paypal-blue" />
                     ) : (
-                      <Activity className="w-4 h-4 text-slate-500" />
+                      <Pulse size={20} className="text-slate-500" />
                     )}
                   </div>
 
@@ -105,7 +105,7 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
                     className="p-1 text-slate-400 hover:text-slate-700 transition-colors cursor-pointer"
                     title={isExpanded ? "Collapse arguments" : "Expand arguments"}
                   >
-                    {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    {isExpanded ? <CaretUp size={16} /> : <CaretDown size={16} />}
                   </button>
                 )}
               </div>
@@ -144,15 +144,15 @@ export function AgentThoughtFeed({ steps, decision, isLoading }: AgentThoughtFee
       {decision && (
         <div className="pt-3 border-t border-slate-100 grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
           <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <CheckCircle size={16} className="text-emerald-600" />
             <span className="font-medium">Seller Trust &ge; 90%</span>
           </div>
           <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <CheckCircle size={16} className="text-emerald-600" />
             <span className="font-medium">30-Day Guarantee</span>
           </div>
           <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">
-            <ShieldCheck className="w-4 h-4 text-paypal-blue" />
+            <CheckCircle size={16} className="text-paypal-blue" />
             <span className="font-medium">PayPal Protection</span>
           </div>
           <div className="p-2 rounded-lg bg-slate-50 border border-slate-100 flex items-center gap-1.5 text-slate-700">

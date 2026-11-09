@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Product, DealBreakdown } from "@/lib/types";
-import { ShieldCheck, Star, Truck, RotateCcw, Tag } from "lucide-react";
+import { CheckCircle, Star, Truck, ArrowCounterClockwise, Tag } from "@phosphor-icons/react";
 
 interface ProductCardProps {
   product: Product;
@@ -60,7 +60,7 @@ export function ProductCard({
 
           {/* Seller Badge */}
           <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-xs border border-slate-200 text-xs text-slate-800 shadow-xs font-medium">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <CheckCircle size={16} className="text-emerald-600" />
             <span>{product.seller.name}</span>
             <span className="text-emerald-700 font-semibold font-mono">({product.seller.trustScore}%)</span>
           </div>
@@ -68,14 +68,14 @@ export function ProductCard({
           {/* Coupon Pill */}
           {product.discountCode && (
             <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-paypal-gold text-paypal-text font-bold text-xs shadow-xs">
-              <Tag className="w-3 h-3" />
+              <Tag size={16} />
               <span>{product.discountCode}</span>
             </div>
           )}
 
           {/* Rating */}
           <div className="absolute bottom-3 left-3 flex items-center gap-1 text-xs text-slate-800 bg-white/90 backdrop-blur-xs px-2.5 py-1 rounded-full border border-slate-200 font-medium shadow-xs">
-            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <Star size={16} weight="fill" className="text-amber-500" />
             <span>{product.rating}</span>
             <span className="text-slate-500">({product.reviewsCount})</span>
           </div>
@@ -141,11 +141,11 @@ export function ProductCard({
           {/* Perks */}
           <div className="flex items-center gap-4 text-xs text-slate-600 pt-1">
             <div className="flex items-center gap-1">
-              <Truck className="w-3.5 h-3.5 text-paypal-blue" />
+              <Truck size={16} className="text-paypal-blue" />
               <span>{product.shippingDays}</span>
             </div>
             <div className="flex items-center gap-1">
-              <RotateCcw className="w-3.5 h-3.5 text-emerald-600" />
+              <ArrowCounterClockwise size={16} className="text-emerald-600" />
               <span>{product.returnDays}-Day Free Returns</span>
             </div>
           </div>

@@ -13,7 +13,7 @@ import {
   DealBreakdown,
   CapturedOrderReceipt,
 } from "@/lib/types";
-import { Sparkles, ArrowRight, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Sparkle, ArrowRight, CheckCircle } from "@phosphor-icons/react";
 
 export default function Home() {
   const [steps, setSteps] = useState<AgentThoughtStep[]>([]);
@@ -192,7 +192,7 @@ export default function Home() {
               &times;
             </button>
             <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-paypal-gold" />
+              <Sparkle size={20} className="text-paypal-gold" />
               <span className="font-bold text-sm">Questions about AgentPay?</span>
             </div>
             <p className="text-xs text-white/80 leading-relaxed">

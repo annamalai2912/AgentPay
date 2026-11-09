@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, ChevronUp, ShieldCheck, Key, Zap } from "lucide-react";
+import { CaretDown, CaretUp, CheckCircle, Key, Lightning } from "@phosphor-icons/react";
 
 export function SandboxCredentialsBanner() {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,15 +26,15 @@ export function SandboxCredentialsBanner() {
             className="flex items-center gap-1 font-semibold text-paypal-blue hover:text-paypal-darkblue transition-colors cursor-pointer text-xs"
           >
             <span>{isOpen ? "Hide Judge Credentials" : "View Judge Credentials & Sandbox Info"}</span>
-            {isOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+            {isOpen ? <CaretUp size={16} /> : <CaretDown size={16} />}
           </button>
         </div>
 
         {isOpen && (
           <div className="mt-3 pt-3 border-t border-slate-200 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-600 animate-fadeIn">
             <div className="p-3 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-xs">
-              <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                <Zap className="w-3.5 h-3.5 text-paypal-blue" />
+              <div className="flex items-center gap-2 font-bold text-slate-900">
+                <Lightning size={20} className="text-paypal-blue" />
                 <span>1. Instant 1-Click Evaluation</span>
               </div>
               <p className="text-slate-500 leading-relaxed text-[11px]">
@@ -43,8 +43,8 @@ export function SandboxCredentialsBanner() {
             </div>
 
             <div className="p-3 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-xs">
-              <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                <Key className="w-3.5 h-3.5 text-paypal-darkblue" />
+              <div className="flex items-center gap-2 font-bold text-slate-900">
+                <Key size={20} className="text-paypal-darkblue" />
                 <span>2. Using Your PayPal Sandbox App</span>
               </div>
               <p className="text-slate-500 text-[11px]">
@@ -58,8 +58,8 @@ export function SandboxCredentialsBanner() {
             </div>
 
             <div className="p-3 bg-white border border-slate-200 rounded-xl space-y-1.5 shadow-xs">
-              <div className="flex items-center gap-1.5 font-bold text-slate-900">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <div className="flex items-center gap-2 font-bold text-slate-900">
+                <CheckCircle size={20} className="text-emerald-600" />
                 <span>3. PayPal Buyer Protection</span>
               </div>
               <p className="text-slate-500 leading-relaxed text-[11px]">
@@ -72,3 +72,4 @@ export function SandboxCredentialsBanner() {
     </div>
   );
 }
+

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronDown, ExternalLink, X } from "lucide-react";
+import { CaretDown, ArrowSquareOut, X } from "@phosphor-icons/react";
 
 export function Navbar() {
   const [showBanner, setShowBanner] = useState(true);
@@ -28,7 +28,7 @@ export function Navbar() {
               className="text-white/60 hover:text-white transition-colors cursor-pointer hidden sm:block"
               title="Close banner"
             >
-              <X className="w-4 h-4" />
+              <X size={16} />
             </button>
           </div>
         </div>
@@ -61,19 +61,19 @@ export function Navbar() {
             <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold text-paypal-text">
               <button className="flex items-center gap-1 hover:text-paypal-blue transition-colors cursor-pointer">
                 <span>Personal</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                <CaretDown size={14} className="text-slate-500" />
               </button>
               <button className="flex items-center gap-1 hover:text-paypal-blue transition-colors cursor-pointer">
                 <span>Business</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                <CaretDown size={14} className="text-slate-500" />
               </button>
               <button className="flex items-center gap-1 hover:text-paypal-blue transition-colors cursor-pointer">
                 <span>Developer Sandbox</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                <CaretDown size={14} className="text-slate-500" />
               </button>
               <button className="flex items-center gap-1 hover:text-paypal-blue transition-colors cursor-pointer">
                 <span>Agentic AI</span>
-                <ChevronDown className="w-3.5 h-3.5 text-slate-500" />
+                <CaretDown size={14} className="text-slate-500" />
               </button>
             </nav>
           </div>

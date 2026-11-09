@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Sparkles, DollarSign, ArrowRight, Loader2 } from "lucide-react";
+import { Sparkle, CurrencyDollar, ArrowRight, CircleNotch } from "@phosphor-icons/react";
 
 interface AgentCommandBarProps {
   onRunAgent: (query: string, budget: number) => void;
@@ -56,7 +56,7 @@ export function AgentCommandBar({ onRunAgent, isLoading }: AgentCommandBarProps)
           {/* Main Natural Language Input */}
           <div className="flex-1 relative">
             <div className="absolute left-4 top-1/2 -translate-y-1/2 flex items-center gap-1.5 text-paypal-blue">
-              <Sparkles className="w-4 h-4" />
+              <Sparkle size={20} />
             </div>
             <input
               type="text"
@@ -74,7 +74,7 @@ export function AgentCommandBar({ onRunAgent, isLoading }: AgentCommandBarProps)
               Budget Cap:
             </span>
             <div className="relative flex items-center">
-              <DollarSign className="w-3.5 h-3.5 text-emerald-600 absolute left-2 pointer-events-none" />
+              <CurrencyDollar size={20} className="text-emerald-600 absolute left-2 pointer-events-none" />
               <input
                 type="number"
                 min="10"
@@ -82,7 +82,7 @@ export function AgentCommandBar({ onRunAgent, isLoading }: AgentCommandBarProps)
                 step="5"
                 value={budget}
                 onChange={(e) => setBudget(Number(e.target.value))}
-                className="w-20 pl-6 pr-1 py-1 bg-white border border-slate-300 rounded-full text-slate-900 font-semibold text-sm focus:outline-none focus:ring-1 focus:ring-paypal-blue"
+                className="w-20 pl-7 pr-1 py-1 bg-white border border-slate-300 rounded-full text-slate-900 font-semibold text-sm focus:outline-none focus:ring-1 focus:ring-paypal-blue"
                 disabled={isLoading}
               />
             </div>
@@ -96,13 +96,13 @@ export function AgentCommandBar({ onRunAgent, isLoading }: AgentCommandBarProps)
           >
             {isLoading ? (
               <>
-                <Loader2 className="w-4 h-4 animate-spin text-white" />
+                <CircleNotch size={20} className="animate-spin text-white" />
                 <span>Negotiating Deals...</span>
               </>
             ) : (
               <>
                 <span>Launch Autonomous Agent</span>
-                <ArrowRight className="w-4 h-4 text-paypal-gold" />
+                <ArrowRight size={20} className="text-paypal-gold" />
               </>
             )}
           </button>

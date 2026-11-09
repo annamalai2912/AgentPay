@@ -2,7 +2,7 @@
 
 import React, { useEffect } from "react";
 import { CapturedOrderReceipt } from "@/lib/types";
-import { CheckCircle2, X, Printer, ArrowRight, ShieldCheck } from "lucide-react";
+import { CheckCircle, X, Printer, ArrowRight } from "@phosphor-icons/react";
 import confetti from "canvas-confetti";
 
 interface DigitalReceiptModalProps {
@@ -52,14 +52,14 @@ export function DigitalReceiptModal({
             onClick={onClose}
             className="p-1 text-slate-400 hover:text-slate-800 transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X size={20} />
           </button>
         </div>
 
         {/* Success Banner */}
         <div className="text-center space-y-1.5 py-2">
           <div className="w-12 h-12 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mb-1">
-            <CheckCircle2 className="w-7 h-7" />
+            <CheckCircle size={28} />
           </div>
           <h2 className="text-xl font-bold text-slate-900">Payment Completed!</h2>
           <p className="text-xs text-slate-500">
@@ -120,7 +120,7 @@ export function DigitalReceiptModal({
 
         {/* Protection Note */}
         <div className="flex items-center gap-2 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600">
-          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+          <CheckCircle size={16} className="text-emerald-600 shrink-0" />
           <span>Backed by <strong>PayPal Buyer Protection</strong>. Your transaction is covered.</span>
         </div>
 
@@ -130,7 +130,7 @@ export function DigitalReceiptModal({
             onClick={() => window.print()}
             className="flex-1 py-3 px-4 rounded-full font-semibold text-xs text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
           >
-            <Printer className="w-4 h-4" />
+            <Printer size={16} />
             <span>Print Receipt</span>
           </button>
 
@@ -142,7 +142,7 @@ export function DigitalReceiptModal({
             className="flex-1 py-3 px-4 rounded-full font-bold text-xs text-white bg-black hover:bg-neutral-800 transition-colors flex items-center justify-center gap-1.5 shadow-sm cursor-pointer"
           >
             <span>Start Next Goal</span>
-            <ArrowRight className="w-4 h-4 text-paypal-gold" />
+            <ArrowRight size={16} className="text-paypal-gold" />
           </button>
         </div>
       </div>
