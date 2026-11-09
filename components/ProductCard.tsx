@@ -2,16 +2,7 @@
 
 import React from "react";
 import { Product, DealBreakdown } from "@/lib/types";
-import {
-  Star,
-  CheckCircle,
-  Truck,
-  RotateCcw,
-  Tag,
-  ShieldCheck,
-  CreditCard,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 
 interface ProductCardProps {
   product: Product;
@@ -26,12 +17,11 @@ export function ProductCard({
   onCheckout,
   isPrimary = false,
 }: ProductCardProps) {
-  // Use passed deal breakdown or calculate basic from product
   const discountAmount = product.originalPrice - product.price;
   const effectiveDeal: DealBreakdown = dealBreakdown || {
     originalPrice: product.originalPrice,
     negotiatedDiscount: discountAmount,
-    couponCodeUsed: product.discountCode || "PAYPAL_AUTO_SAVINGS",
+    couponCodeUsed: product.discountCode || "PAYPAL_DIRECT",
     subtotal: product.price,
     estimatedTax: Number((product.price * 0.06).toFixed(2)),
     shipping: product.shippingCost,
@@ -41,149 +31,114 @@ export function ProductCard({
 
   return (
     <div
-      className={`rounded-2xl transition-all overflow-hidden flex flex-col justify-between ${
+      className={`rounded-sm transition-colors border flex flex-col justify-between ${
         isPrimary
-          ? "bg-gradient-to-b from-cyber-card via-slate-900 to-cyber-dark border-2 border-paypal-light/60 shadow-2xl shadow-paypal-blue/20 ring-1 ring-paypal-light/30"
-          : "bg-cyber-card/70 border border-cyber-border hover:border-slate-600"
+          ? "bg-charcoal border-hairline-strong"
+          : "bg-obsidian border-hairline hover:border-hairline-strong"
       }`}
     >
       <div>
-        {/* Top Highlight Banner */}
-        {product.highlight && (
-          <div className="bg-gradient-to-r from-paypal-blue via-paypal-darkblue to-cyan-700 px-4 py-1.5 text-xs font-semibold text-white flex items-center justify-between">
-            <span className="flex items-center gap-1.5">
-              <Zap className="w-3.5 h-3.5 text-paypal-gold" />
-              {product.highlight}
+        {/* Header Ribbon */}
+        {isPrimary && (
+          <div className="bg-obsidian border-b border-hairline px-3.5 py-1.5 flex items-center justify-between text-[10px] font-mono">
+            <span className="text-bronze font-semibold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-bronze rounded-xs" />
+              PRIMARY_RECOMMENDED_PROCUREMENT
             </span>
-            {isPrimary && (
-              <span className="bg-paypal-gold text-slate-950 font-bold px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">
-                Agent Top Pick
-              </span>
-            )}
+            <span className="text-stone">MATCH_INDEX: 0.98</span>
           </div>
         )}
 
-        {/* Image & Price Area */}
-        <div className="relative h-56 w-full bg-slate-950 overflow-hidden group">
+        {/* Product Image Frame */}
+        <div className="relative h-48 w-full bg-black overflow-hidden border-b border-hairline">
           <img
             src={product.image}
             alt={product.title}
-            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover object-center grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
-
-          {/* Seller Trust Badge */}
-          <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md border border-slate-700 text-[11px] text-white">
-            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            <span>{product.seller.name}</span>
-            <span className="text-emerald-400 font-mono font-semibold">({product.seller.trustScore}%)</span>
+          <div className="absolute top-2 left-2 flex items-center gap-1 px-2 py-0.5 bg-obsidian/90 border border-hairline rounded-xs text-[10px] font-mono text-stone-light">
+            <span>SELLER: {product.seller.name}</span>
+            <span className="text-bone">({product.seller.trustScore}%)</span>
           </div>
 
-          {/* Coupon Tag */}
           {product.discountCode && (
-            <div className="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-paypal-gold/90 text-slate-950 font-mono font-bold text-xs shadow-md">
-              <Tag className="w-3 h-3" />
-              <span>{product.discountCode}</span>
+            <div className="absolute top-2 right-2 px-2 py-0.5 bg-bronze/20 text-bronze border border-bronze/40 rounded-xs text-[10px] font-mono font-medium">
+              REBATE: {product.discountCode}
             </div>
           )}
-
-          {/* Rating */}
-          <div className="absolute bottom-3 left-3 flex items-center gap-1.5 text-xs text-white bg-slate-900/80 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-slate-800">
-            <Star className="w-3.5 h-3.5 text-amber-400 fill-amber-400" />
-            <span className="font-semibold">{product.rating}</span>
-            <span className="text-slate-400">({product.reviewsCount})</span>
-          </div>
         </div>
 
-        {/* Content */}
-        <div className="p-5 space-y-4">
+        {/* Content & Specifications */}
+        <div className="p-4 space-y-4">
           <div>
-            <div className="text-[11px] font-mono uppercase tracking-wider text-paypal-light font-semibold">
-              {product.brand}
-            </div>
-            <h4 className="text-base font-bold text-white mt-0.5 leading-snug">
+            <span className="text-[10px] font-mono uppercase tracking-wider text-stone block">
+              {product.brand} &bull; SKU: {product.id.toUpperCase()}
+            </span>
+            <h4 className="text-sm font-semibold text-bone mt-0.5 leading-snug">
               {product.title}
             </h4>
-            <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+            <p className="text-xs text-stone mt-1 line-clamp-2 leading-relaxed">
               {product.description}
             </p>
           </div>
 
-          {/* Pricing & Savings Breakdown */}
-          <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-2">
-            <div className="flex items-baseline justify-between">
-              <div>
-                <span className="text-2xl font-black text-white font-mono">
-                  ${product.price.toFixed(2)}
-                </span>
-                <span className="text-xs text-slate-400 line-through ml-2 font-mono">
-                  ${product.originalPrice.toFixed(2)}
-                </span>
-              </div>
-              <div className="text-right">
-                <span className="px-2 py-0.5 rounded text-xs font-bold font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  Save ${effectiveDeal.savingsTotal.toFixed(2)}
-                </span>
-              </div>
+          {/* Transparent Pricing Ledger */}
+          <div className="p-3 bg-obsidian border border-hairline rounded-xs font-mono text-xs space-y-1.5">
+            <div className="flex justify-between text-stone text-[11px]">
+              <span>MSRP LIST PRICE:</span>
+              <span className="line-through">${product.originalPrice.toFixed(2)}</span>
             </div>
-
-            <div className="text-[11px] text-slate-400 flex items-center justify-between pt-1 border-t border-slate-800/80">
-              <span>Estimated Tax (6%):</span>
-              <span className="text-slate-300 font-mono">${effectiveDeal.estimatedTax.toFixed(2)}</span>
+            <div className="flex justify-between text-bronze text-[11px]">
+              <span>NEGOTIATED REBATE:</span>
+              <span>-${effectiveDeal.savingsTotal.toFixed(2)}</span>
             </div>
-            <div className="text-[11px] text-slate-400 flex items-center justify-between">
-              <span>Shipping:</span>
-              <span className="text-emerald-400 font-mono font-medium">
-                {product.shippingCost === 0 ? "FREE Express" : `$${product.shippingCost.toFixed(2)}`}
+            <div className="flex justify-between text-stone text-[11px]">
+              <span>ESTIMATED TAX (6%):</span>
+              <span>${effectiveDeal.estimatedTax.toFixed(2)}</span>
+            </div>
+            <div className="flex justify-between text-stone text-[11px]">
+              <span>DISPATCH &amp; SHIPPING:</span>
+              <span className="text-bone">
+                {product.shippingCost === 0 ? "WAIVED (EXPRESS)" : `$${product.shippingCost.toFixed(2)}`}
               </span>
             </div>
-            <div className="text-xs font-semibold text-white flex items-center justify-between pt-1 border-t border-slate-800">
-              <span>Estimated Total:</span>
-              <span className="text-cyan-300 font-mono text-sm">${effectiveDeal.finalTotal.toFixed(2)}</span>
+            <div className="pt-1.5 border-t border-hairline flex justify-between items-baseline text-bone font-medium">
+              <span className="text-[11px]">TOTAL SETTLEMENT:</span>
+              <span className="text-base font-semibold font-tabular">
+                ${effectiveDeal.finalTotal.toFixed(2)} <span className="text-[10px] text-stone">USD</span>
+              </span>
             </div>
           </div>
 
-          {/* Key Specs */}
-          <div className="space-y-1.5">
-            <span className="text-[11px] font-semibold text-slate-300 uppercase tracking-wider">
-              Verified Specifications:
+          {/* Specs Micro-Grid */}
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono text-stone uppercase tracking-wider block">
+              VERIFIED ATTRIBUTES:
             </span>
-            <div className="grid grid-cols-2 gap-1.5 text-[11px]">
-              {Object.entries(product.specs).slice(0, 4).map(([key, val]) => (
-                <div key={key} className="p-1.5 rounded bg-slate-900/50 border border-slate-800/60">
-                  <span className="text-slate-400 block text-[10px]">{key}</span>
-                  <span className="text-white font-medium truncate block">{val}</span>
+            <div className="grid grid-cols-2 gap-1 text-[10px] font-mono text-stone-light">
+              {Object.entries(product.specs).slice(0, 4).map(([k, v]) => (
+                <div key={k} className="p-1 bg-obsidian border border-hairline rounded-xs truncate">
+                  <span className="text-stone block">{k}:</span>
+                  <span className="text-bone">{v}</span>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Perks */}
-          <div className="flex items-center gap-4 text-[11px] text-slate-400 pt-1">
-            <div className="flex items-center gap-1">
-              <Truck className="w-3.5 h-3.5 text-cyan-400" />
-              <span>{product.shippingDays}</span>
-            </div>
-            <div className="flex items-center gap-1">
-              <RotateCcw className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{product.returnDays}-Day Returns</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Action Footer */}
-      <div className="p-5 pt-0">
+      <div className="p-4 pt-0">
         <button
           onClick={() => onCheckout(product, effectiveDeal)}
-          className={`w-full py-3 px-4 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transition-all cursor-pointer shadow-lg ${
+          className={`w-full py-2.5 px-3 rounded-xs font-medium text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer ${
             isPrimary
-              ? "bg-gradient-to-r from-paypal-gold via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-paypal-gold text-slate-950 shadow-amber-500/20"
-              : "bg-slate-800 hover:bg-slate-700 text-white border border-slate-700"
+              ? "bg-bone hover:bg-stone-light text-obsidian"
+              : "bg-charcoal hover:bg-raised border border-hairline text-bone"
           }`}
         >
-          <CreditCard className="w-4 h-4" />
-          <span>Authorize & Checkout with PayPal</span>
+          <span>AUTHORIZE VIA PAYPAL</span>
+          <ArrowRight className="w-3.5 h-3.5" />
         </button>
       </div>
     </div>

@@ -5,8 +5,8 @@ import { SandboxCredentialsBanner } from "@/components/SandboxCredentialsBanner"
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "AgentPay - Autonomous Agentic Commerce Assistant (PayPal AI Hackathon)",
-  description: "An autonomous AI buyer, negotiator, and checkout agent built on PayPal Developer Sandbox and AI Agentic Workflows.",
+  title: "AgentPay — Autonomous Agentic Commerce (PayPal AI Hackathon)",
+  description: "Autonomous commerce operating system powered by the PayPal Developer Platform and AI Agentic Workflows.",
   keywords: ["PayPal", "AI", "Agentic Commerce", "Hackathon", "Autonomous Agent", "PayPal Sandbox"],
 };
 
@@ -17,24 +17,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="bg-cyber-dark text-slate-100 min-h-screen flex flex-col antialiased selection:bg-paypal-blue selection:text-white">
+      <body className="bg-obsidian text-bone min-h-screen flex flex-col antialiased selection:bg-bronze selection:text-obsidian">
         <Providers>
           <Navbar />
           <SandboxCredentialsBanner />
           <main className="flex-1 w-full">{children}</main>
-          <footer className="border-t border-cyber-border/60 py-6 text-center text-xs text-slate-500 bg-cyber-dark/80">
-            <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <footer className="border-t border-hairline py-4 text-xs font-mono text-stone bg-obsidian">
+            <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <span className="font-semibold text-slate-400">AgentPay &copy; 2026</span>
+                <span className="font-semibold text-stone-light">AgentPay &copy; 2026</span>
                 <span>&bull;</span>
-                <span>PayPal AI Hackathon Entry</span>
+                <span>PayPal AI Hackathon</span>
               </div>
-              <div className="flex items-center gap-4 text-slate-400 text-[11px]">
-                <span>Best Use of Agentic Commerce</span>
+              <div className="flex items-center gap-3 text-stone text-[11px]">
+                <span>AGENTIC_COMMERCE_TRACK</span>
                 <span>&bull;</span>
-                <span>Best Use of PayPal + AI</span>
+                <span>PAYPAL_REST_V2</span>
                 <span>&bull;</span>
-                <span>Render Sponsor Ready</span>
+                <span>RENDER_READY</span>
               </div>
             </div>
           </footer>

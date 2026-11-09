@@ -138,3 +138,4 @@ Try these pre-configured prompts in the UI:
 
 ## 📜 License
 This project is open-source under the [MIT License](LICENSE).
+

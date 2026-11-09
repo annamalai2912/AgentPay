@@ -198,3 +198,4 @@ export const PRODUCT_CATALOG: Product[] = [
     highlight: "Complete Setup Companion: Powers 3 monitors and charges your machine."
   }
 ];
+

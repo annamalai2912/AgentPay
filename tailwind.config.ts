@@ -9,37 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        paypal: {
-          blue: "#0070BA",
-          darkblue: "#003087",
-          navy: "#001C48",
-          light: "#0079C1",
-          gold: "#FFC439",
+        obsidian: "#0C0C0E",
+        charcoal: "#16161A",
+        raised: "#1F1F24",
+        hairline: "#27272A",
+        "hairline-strong": "#3F3F46",
+        bone: "#F5F5F7",
+        stone: {
+          light: "#A1A1AA",
+          DEFAULT: "#71717A",
+          dark: "#52525B",
         },
-        cyber: {
-          dark: "#0a0d14",
-          card: "#111726",
-          border: "#1f293d",
-          accent: "#38bdf8",
-          emerald: "#10b981",
-        }
+        bronze: {
+          light: "#F59E0B",
+          DEFAULT: "#D97706",
+          dark: "#B45309",
+        },
+        brass: {
+          light: "#FDE047",
+          DEFAULT: "#EAB308",
+          dark: "#CA8A04",
+        },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Inter", "-apple-system", "BlinkMacSystemFont", "system-ui", "sans-serif"],
+        mono: ["JetBrains Mono", "SF Mono", "Menlo", "Courier New", "monospace"],
       },
-      animation: {
-        "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
-        "glow": "glow 2s ease-in-out infinite alternate",
+      borderRadius: {
+        xs: "2px",
+        sm: "4px",
+        DEFAULT: "4px",
+        md: "6px",
+        lg: "8px",
+        xl: "12px",
       },
-      keyframes: {
-        glow: {
-          "0%": { boxShadow: "0 0 10px rgba(0, 112, 186, 0.3)" },
-          "100%": { boxShadow: "0 0 25px rgba(0, 112, 186, 0.7)" },
-        }
-      }
     },
   },
   plugins: [],
 };
 export default config;
-
