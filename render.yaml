@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: agentpay-commerce
+    env: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NEXT_PUBLIC_PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
